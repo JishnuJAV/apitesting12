@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
+
+export const DataFetching =()=>{
+  const [results, setResults] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/comments')
+    .then(response => response.json())
+    .then(json => setResults(json)).catch(err =>{
+      console.log(err)
+    })
+  
+  },[])
+  return(
+    <div>
+      <ul>
+        {
+          results.map(result => <li key={result.id}>{result.id}<br/>{result.name}<br/>{result.email}</li>)
+        }
+      </ul>
+    </div>
+  );
+}
+
+
+const App=()=> {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>api testing..!!</h1>
+    <DataFetching />
     </div>
   );
 }
