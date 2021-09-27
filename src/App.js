@@ -14,11 +14,11 @@ export const DataFetching =()=>{
   },[])
   return(
     <div>
-      <ul>
+      
         {
-          results.map(result => <li key={result.id}>{result.id}<br/>{result.name}<br/>{result.email}</li>)
+          results.map(result => <div key={result.id}>{result.id}<br/>{result.name}<br/>{result.email}</div>)
         }
-      </ul>
+     
     </div>
   );
 }
