@@ -5,7 +5,7 @@ import './App.css';
 export const DataFetching =()=>{
   const [results, setResults] = useState([]);
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/comments')
+    fetch('https://jsonplaceholder.typicode.com/posts/2/comments')
     .then(response => response.json())
     .then(json => setResults(json)).catch(err =>{
       console.log(err)
